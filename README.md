@@ -201,3 +201,9 @@ commit log is the change record.
 ## Contact
 
 [`quantapix@gmail.com`](mailto:quantapix@gmail.com)
+
+## License
+
+MIT (`LICENSE`). Content-class repo — focus-area prose plus the
+OSS-contribution roadmap. Short embedded snippets ride the same
+MIT grant.
