@@ -1,55 +1,61 @@
 # qstudying-public — status
 
-_Snapshot: 2026-06-01. Refreshed weekly (Fridays) during the
+_Snapshot: 2026-06-12. Refreshed weekly (Fridays) during the
 2026-06-01 → 2026-12-01 drive window._
 
-Release-narrative status of the Lean4 expert-track + open-source
-contribution roadmap. Companion to the [README](./README.md), not a
-substitute.
+Release-narrative status of the Lean4 focus-area syllabus. Companion to the
+[README](./README.md), not a substitute.
 
 ## Overall
 
-**A roadmap, not a runtime** — so its public surface is the syllabus
-itself: 10 ranked focus areas selected for the *axiomatic-kernel +
-LLM-generated facts + lake-build-as-verification* architecture, with a
-reading order, active upstream threads to track, and an explicit skip list.
-Pure-mathlib paths (Topology, MeasureTheory, Analysis, CategoryTheory) are
-deliberately out of scope. Toolchain pinned to the same Lean version both
-kernels build against.
+**The roadmap became a kernel.** This repo windows the subproject that owns
+the *third* Lean4 axis — the operational domain — alongside the cross-axis
+representation research that keeps all three kernels consistent. On
+2026-06-10 the syllabus was rewritten under a three-axis charter (every
+area tagged to a workstream; the old open-source-contribution framing
+retired). On 2026-06-12 the first operational theorem landed: a
+kernel-checked proof that the constellation's session write-lock discipline
+excludes conflicting concurrent sessions, driven end-to-end by an
+adversarial coding-vs-testing LLM debate lane — no manual proof driving.
 
-## What the roadmap now backs
+## The three axes
 
-The architecture the syllabus is selected *for* is no longer aspirational —
-it is running in the two kernel subprojects published as
-[`qnarre-public`](https://github.com/quantapix/qnarre-public) (legal) and
-[`qresev-public`](https://github.com/quantapix/qresev-public) (financial),
-including the redundant-encoding axiomatization programs that score blind
-agent encodings against a hand-built golden reference via kernel-checked
-Bridge lemmas. The focus areas read against real kernel pain points (the
-`axiom`/`opaque`/`noncomputable`/`Prop` trust boundary, decidability on
-opaque domains, `List.Mem` proof patterns, namespace discipline that
-survives codegen, and the metaprogramming move to replace string-level
-codegen with a Lean elaborator).
+The architecture the syllabus is selected *for* runs in three parallel
+kernels, one per domain, never sharing ground truth:
 
-## Contribution surface
+- **Textual** — the legal-domain axiom sets published as
+  [`qnarre-public`](https://github.com/quantapix/qnarre-public).
+- **Numerical** — the financial-domain axiom sets published as
+  [`qresev-public`](https://github.com/quantapix/qresev-public).
+- **Operational** — git-grounded axioms over the agent constellation's own
+  daily mechanics (this subproject; focus area #10). First theorem proved
+  2026-06-12: lock exclusion over an extracted repo snapshot, with the
+  adversarial side's negation and axiom-audit probes committed alongside
+  the constructive proof.
 
-The highest-leverage upstream paths are flagged: an unclear elaboration
-diagnostic (a sanctioned external-PR path, no RFC required); a handful of
-`easy`-labeled standard-library PRs to learn the review loop; and, longer
-term, a demonstration case study the language foundation's roadmap
-explicitly invites. Active threads tracked (lurk-first): coinductive
-predicates, native-computation axiom RFCs, standard-library stabilization,
-an LLM-copilot opaque-domain integration, and documentation tooling.
+All three pin the same Lean toolchain (`leanprover/lean4:v4.30.0`,
+three-way lockstep; bumps move all three in one commit and replay each
+kernel's example proofs).
+
+## Representation research
+
+The cross-axis representation guide is now written (authored 2026-06-11,
+debate-verified): it maps each standard Theorem-Proving-in-Lean /
+reference-manual idiom to its kernel counterpart with the three axes as
+parallel columns, plus the code-generation templates the proof-driving
+lanes consume (facts skeletons, quartet module templates, membership-helper
+shapes, a diagnostics decoder, and the round/report/verdict emit schemas).
+The proof drivers read a document now, not folklore.
 
 ## Cadence
 
 Re-rankings, new threads, and dropped items land as ordinary diffs; the
-commit log is the change record. The README itself changes when the
-syllabus is re-ranked.
+commit log is the change record.
 
 ## How to verify
 
-- The 10 focus areas + reading order + skip list are the whole artifact;
-  every upstream citation resolves to the public language repository.
-- The architecture they target is observable in the two published kernel
-  repos.
+- The 10 focus areas + reading order + skip list are the whole syllabus;
+  every upstream citation resolves to a public repository.
+- The textual and numerical kernels are observable in the two published
+  kernel repos above; the operational kernel's theorems are described here
+  as they land.
