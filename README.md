@@ -231,16 +231,26 @@ constructs the proof over extracted repo-snapshot facts, the other commits
 attack probes — embedded negations, axiom-audit checks — against the same
 build gate), never manually.
 
-**Status: shipped (2026-06-12).** The operational lake package builds green
-on the lockstep pin, and the first end-to-end example proof is in: **T1,
-lock exclusion** — on an extracted repo snapshot, any two write-locks held
-by distinct sessions have non-conflicting scopes — discharged over a closed
-lock-table enumeration plus extracted scope-disjointness facts, with the
-adversarial side's negation and audit probes committed alongside. A
-companion theorem proves the full five-field lock model (every held lock is
-a live, scope-named, session-opened branch; locks are exclusive per branch;
-one branch per session per scope). Next theorems: close-cascade
-reachability preservation and divergence detection.
+**Status: shipped, three theorems in (2026-06-13).** The operational lake
+package builds green on the lockstep pin, and three end-to-end example
+proofs are landed — each driven through the coding-vs-testing adversarial
+debate lane, with the testing side's negation and axiom-audit probes
+committed alongside the constructive proof:
+
+- **T1, lock exclusion** — on an extracted repo snapshot, any two
+  write-locks held by distinct sessions have non-conflicting scopes;
+  discharged over a closed lock-table enumeration plus extracted
+  scope-disjointness facts. A companion theorem proves the full five-field
+  lock model (every held lock is a live, scope-named, session-opened
+  branch; locks are exclusive per branch; one branch per session per scope).
+- **T2, cascade safety** — the session-close merge-to-parent walk preserves
+  committed-object reachability, over a stacked-branch fixture; reachability
+  is derived by the kernel, never asserted.
+- **T3, integrity breach** — the snapshot audit detects a session whose
+  window commit leaks to a path outside its own working-tree root: the
+  canonical bypass an editor-level guard structurally cannot see.
+
+Next theorems extend the same operational-invariant surface.
 
 **Difficulty:** Mid–Deep.
 
@@ -278,6 +288,12 @@ reachability preservation and divergence detection.
   a different-domain mirror of the string-codegen→elaborator ambition (#3).
 - **cslib growth** — young and moving; each refresh may add structures worth
   mirroring in the operational kernel (#10).
+- **Operational-axis coverage denominator** — the operational kernel is the
+  first of the three to carry a live, deterministic coverage denominator:
+  the set of operational domain concepts it formalizes is extracted from the
+  git glossary over a cited neighborhood, so coverage is a real fraction over
+  a real ground-truth set rather than a hand-maintained estimate. Tracked as
+  it grows.
 
 ## Skip / deprioritise
 
