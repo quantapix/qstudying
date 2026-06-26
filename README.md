@@ -3,8 +3,16 @@
 > Lean4 focus areas for the *axiomatic-kernel + LLM-generated facts +
 > lake-build-as-verification* architecture — now three kernels: the
 > legal-domain and financial-domain axiom sets behind Qnarre and Qresev,
-> plus a third, operational-domain kernel that axiomatizes the agent
-> constellation's own daily mechanics, starting with git.
+> plus a third, operational-domain kernel that turns the method inward,
+> axiomatizing the agent constellation's own engineering mechanics
+> (starting with git) into proofs a local consumer only visualizes.
+
+This third axis is the method turned back on Quantapix itself — the only
+self-referential one, and **partially exercised, not closed**: the method
+*describes and distills* these engineering mechanics into proofs, but no
+proof yet *governs* an operation, and the local consumer only visualizes
+them. It is a deeper exposition of the **method**, the third axis of one
+method — not a product, a service, or a feature.
 
 A weekly-refreshed window into the working syllabus that runs alongside the
 private working repository. Rewritten 2026-06-10 under a three-axis charter:
@@ -183,9 +191,17 @@ Upstream `src/Lean/Elab/Tactic/`, `src/Lean/Meta/Tactic/`, plus the
 safe/unsafe + custom rule builders). The payoff: replace explicit `List.Mem`
 chains with one `aesop` call once the axiom set is taught as rules; later, a
 domain-specific `prove_predicate` tactic for predicate enumeration.
-Dependency note: `aesop` usage is currently zero and `@[simp]` essentially
-absent — the automation gap is upstream (membership helpers #2 + codegen
-#3). Land those first; this area has no live surface until then. Aesop has
+
+**Landed (a first domain tactic, not aesop).** A Mathlib-free domain proof
+tactic now ships — core `grind` + `constructor` + `assumption` composed via
+`macro_rules`, with a `@[grind →]` doctrine-tagging convention that teaches
+the axiom set to the prover as tagged intro rules. It first discharges a
+hierarchical predicate decomposition, where the simple route closes by
+`constructor` and the structured route genuinely needs the tagged `grind`
+intro. The **aesop** arm stays deferred: aesop is not in core and is
+charter-gated the same way Mathlib is — the operational axis rejects both, so
+the explicit-`List.Mem`-chain → one-`aesop`-call payoff remains future work
+behind membership helpers #2 + codegen #3. Aesop has
 no documented opaque-axiom rule-builder, so a custom builder over domain
 axioms is a representation-guide deliverable in its own right.
 
@@ -225,7 +241,11 @@ protocol.
 The angle is the point: the first theorems target the agent constellation's
 *own* operational invariants — branch-presence-as-write-lock exclusion,
 close-cascade safety, canonical-vs-worktree divergence — with git's
-semantics as the axiom layer beneath them. Proofs run through a
+semantics as the axiom layer beneath them. These proofs *describe* the
+constellation's mechanics; they do not yet *govern* them — the loop is
+partially exercised (discovery and distillation ship and are audited), not
+a closed self-governing one, and the consumer is local-only and only
+visualizes. Proofs run through a
 coding-vs-testing adversarial debate lane (paired LLM agents: one side
 constructs the proof over extracted repo-snapshot facts, the other commits
 attack probes — embedded negations, axiom-audit checks — against the same
@@ -250,7 +270,10 @@ committed alongside the constructive proof:
   window commit leaks to a path outside its own working-tree root: the
   canonical bypass an editor-level guard structurally cannot see.
 
-Next theorems extend the same operational-invariant surface.
+Next theorems extend the same operational-invariant surface. The
+hierarchical predicate decomposition already used on the textual and
+numerical axes now extends to the operational kernel — the same
+hierarchy/leaf-extraction method, applied inward.
 
 **Difficulty:** Mid–Deep.
 

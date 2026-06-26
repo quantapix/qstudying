@@ -1,6 +1,6 @@
 # qstudying-public — status
 
-_Snapshot: 2026-06-12. Refreshed weekly (Fridays) during the
+_Snapshot: 2026-06-26. Refreshed weekly (Fridays) during the
 2026-06-01 → 2026-12-01 drive window._
 
 Release-narrative status of the Lean4 focus-area syllabus. Companion to the
@@ -46,6 +46,13 @@ parallel columns, plus the code-generation templates the proof-driving
 lanes consume (facts skeletons, quartet module templates, membership-helper
 shapes, a diagnostics decoder, and the round/report/verdict emit schemas).
 The proof drivers read a document now, not folklore.
+
+The tactics framework (focus area #8) reached its first landing this cycle —
+a Mathlib-free domain tactic over core `grind`, the first live surface for
+that area. It first discharges a hierarchical predicate decomposition, the
+same hierarchy/leaf-extraction method already used on the textual and
+numerical axes, now applied to the operational kernel. The `aesop` arm stays
+deferred (charter-gated like Mathlib; the operational axis rejects both).
 
 ## Cadence
 
