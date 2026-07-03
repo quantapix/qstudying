@@ -26,10 +26,11 @@ paths (Topology, MeasureTheory, Analysis, CategoryTheory) remain deliberately
 out of scope.
 
 Toolchain pin (all three kernels, three-way lockstep):
-`leanprover/lean4:v4.30.0`. Any bump moves all three in one commit and
-replays each kernel's example proofs. The Lean Language Reference tracks
-v4.31-rc1, so the docs lead the toolchain — lead-only skew, checked at each
-source refresh.
+`leanprover/lean4:v4.31.0` (bumped from v4.30.0 on 2026-06-29 —
+v4.30.0 *final* had shipped 2026-05-26). Any bump moves all three
+kernels in one commit and replays each kernel's example proofs. The
+Language Reference and the toolchain now track the same release, closing
+the prior lead-only skew — re-checked at each source refresh.
 
 - Parent organisation: <https://github.com/quantapix>
 - Engineering output: <https://quantapix.com>
@@ -64,11 +65,12 @@ why opaque predicates must be `Prop`-valued (not `Bool`), and why
 `noncomputable` is correct — not a smell — for axiom-list witnesses. The
 representation guide's kernel-shape chapter starts here.
 
-Re-validate against v4.30.0 PR #12973 — "makes theorems opaque in almost all
-ways, including in the kernel." With all three kernels pinned to v4.30.0,
+Re-validate against PR #12973 — "makes theorems opaque in almost all
+ways, including in the kernel." With all three kernels now pinned to v4.31.0,
 a green `lake build` of each axiom set is the load-bearing post-bump
 confirmation that `Prop`-valued opaque predicates and `noncomputable`
-witnesses still reduce in def-eq the way the proofs assume.
+witnesses still reduce in def-eq the way the proofs assume — re-confirmed on
+the v4.30.0 → v4.31.0 bump.
 
 **Difficulty:** Deep. Non-negotiable. **Order:** start here.
 
