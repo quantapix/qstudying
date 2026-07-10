@@ -1,6 +1,6 @@
 # qstudying-public — status
 
-_Snapshot: 2026-06-26. Refreshed weekly (Fridays) during the
+_Snapshot: 2026-07-10. Refreshed weekly (Fridays) during the
 2026-06-01 → 2026-12-01 drive window._
 
 Release-narrative status of the Lean4 focus-area syllabus. Companion to the
@@ -33,7 +33,7 @@ kernels, one per domain, never sharing ground truth:
   adversarial side's negation and axiom-audit probes committed alongside
   the constructive proof.
 
-All three pin the same Lean toolchain (`leanprover/lean4:v4.30.0`,
+All three pin the same Lean toolchain (`leanprover/lean4:v4.31.0`,
 three-way lockstep; bumps move all three in one commit and replay each
 kernel's example proofs).
 
