@@ -26,11 +26,24 @@ paths (Topology, MeasureTheory, Analysis, CategoryTheory) remain deliberately
 out of scope.
 
 Toolchain pin (all three kernels, three-way lockstep):
-`leanprover/lean4:v4.31.0` (bumped from v4.30.0 on 2026-06-29 —
-v4.30.0 *final* had shipped 2026-05-26). Any bump moves all three
-kernels in one commit and replays each kernel's example proofs. The
-Language Reference and the toolchain now track the same release, closing
-the prior lead-only skew — re-checked at each source refresh.
+`leanprover/lean4:v4.32.0` (bumped from v4.31.0 on 2026-07-14; the prior
+v4.30.0 → v4.31.0 bump was 2026-06-29). Any bump moves all three kernels
+in lockstep and replays each kernel's example proofs. "One commit" is not
+always achievable — when the three kernels are each held by a separate
+concurrent session, the bump lands as one commit per kernel, in lockstep
+in time, each verified independently; the deviation is recorded rather
+than papered over.
+
+One non-obvious hazard, stated here because it voided real work: the pin
+is read from the *current directory*. A bare compiler invocation from a
+directory that has no pin file silently falls back to the default
+toolchain — which then rejects the kernel's compiled artifacts as
+incompatible, invites a "workaround" that recompiles shared modules from
+source, and produces a green build against a compiler the kernel does not
+use. That green means nothing. Always invoke through the package's own
+build environment, or pin the invocation explicitly. A file in the
+package root is not a pin for any process whose working directory is
+elsewhere.
 
 - Parent organisation: <https://github.com/quantapix>
 - Engineering output: <https://quantapix.com>
@@ -66,11 +79,11 @@ why opaque predicates must be `Prop`-valued (not `Bool`), and why
 representation guide's kernel-shape chapter starts here.
 
 Re-validate against PR #12973 — "makes theorems opaque in almost all
-ways, including in the kernel." With all three kernels now pinned to v4.31.0,
+ways, including in the kernel." With all three kernels now pinned to v4.32.0,
 a green `lake build` of each axiom set is the load-bearing post-bump
 confirmation that `Prop`-valued opaque predicates and `noncomputable`
 witnesses still reduce in def-eq the way the proofs assume — re-confirmed on
-the v4.30.0 → v4.31.0 bump.
+the v4.31.0 → v4.32.0 bump.
 
 **Difficulty:** Deep. Non-negotiable. **Order:** start here.
 
@@ -249,19 +262,20 @@ partially exercised (discovery and distillation ship and are audited), not
 a closed self-governing one, and the consumer is local-only and only
 visualizes. Proofs run through a
 coding-vs-testing adversarial debate lane (paired LLM agents: one side
-constructs the proof over extracted repo-snapshot facts, the other commits
+constructs the proof over synthetic repo-snapshot facts, the other commits
 attack probes — embedded negations, axiom-audit checks — against the same
 build gate), never manually.
 
-**Status: shipped, three theorems in (2026-06-13).** The operational lake
-package builds green on the lockstep pin, and three end-to-end example
-proofs are landed — each driven through the coding-vs-testing adversarial
+**Status: shipped.** The operational lake package builds green on the
+lockstep pin, and the git-axis invariant theorems are proved end-to-end over
+**synthetic and structurally-synthetic repository snapshots — never
+real-tree data** — each driven through the coding-vs-testing adversarial
 debate lane, with the testing side's negation and axiom-audit probes
 committed alongside the constructive proof:
 
-- **T1, lock exclusion** — on an extracted repo snapshot, any two
+- **T1, lock exclusion** — over a synthetic snapshot, any two
   write-locks held by distinct sessions have non-conflicting scopes;
-  discharged over a closed lock-table enumeration plus extracted
+  discharged over a closed lock-table enumeration plus
   scope-disjointness facts. A companion theorem proves the full five-field
   lock model (every held lock is a live, scope-named, session-opened
   branch; locks are exclusive per branch; one branch per session per scope).
@@ -272,10 +286,15 @@ committed alongside the constructive proof:
   window commit leaks to a path outside its own working-tree root: the
   canonical bypass an editor-level guard structurally cannot see.
 
-Next theorems extend the same operational-invariant surface. The
-hierarchical predicate decomposition already used on the textual and
-numerical axes now extends to the operational kernel — the same
-hierarchy/leaf-extraction method, applied inward.
+Additional operational-invariant theorems extend the same surface — a
+substrate layer beneath git (files, processes, exit codes), a relational
+ledger's append/replay/adoption semantics, and the governance gate described
+in [STATUS](./STATUS.md). The hierarchical predicate decomposition already
+used on the textual and numerical axes now extends to the operational kernel
+— the same hierarchy/leaf-extraction method, applied inward. The syllabus
+enumerates the architectural surface only; the axis's memory- and
+session-substrate theorems are tracked privately and are deliberately absent
+from the public syllabus.
 
 **Difficulty:** Mid–Deep.
 
@@ -339,7 +358,8 @@ record.
 
 ## Contact
 
-[`quantapix@gmail.com`](mailto:quantapix@gmail.com)
+[github.com/quantapix](https://github.com/quantapix) — open an issue on any repo
+in the org. Answered in public; there is no contact email.
 
 ## License
 
