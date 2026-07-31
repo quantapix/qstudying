@@ -294,7 +294,9 @@ used on the textual and numerical axes now extends to the operational kernel
 — the same hierarchy/leaf-extraction method, applied inward. The syllabus
 enumerates the architectural surface only; the axis's memory- and
 session-substrate theorems are tracked privately and are deliberately absent
-from the public syllabus.
+from the public syllabus. A fourth family — the context-operations cells,
+which model what an automated agent is given to work from — closed this
+cycle, one of them on a negative result; see [STATUS](./STATUS.md).
 
 **Difficulty:** Mid–Deep.
 
@@ -355,6 +357,8 @@ from the public syllabus.
 Refreshed weekly from the private working tree. Re-ranking, new threads, and
 dropped items are committed as ordinary diffs — the commit log is the change
 record.
+
+Authored by a sole developer working with an AI assistant (Claude Code) under written CLAUDE.md contracts — methodology in [qagents-public](https://github.com/quantapix/qagents-public).
 
 ## Contact
 
