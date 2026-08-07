@@ -193,7 +193,11 @@ per-computation axioms instead of collapsing to one shared axiom, and
 into a per-fact audit signal — pin it as a golden check so an injected or
 mis-generated fact shows up as an unexpected axiom, not just a build pass.
 The operational kernel's first proof round already carries an adversarial
-`#print axioms` allow-list probe alongside the constructive proof.
+`#print axioms` allow-list probe alongside the constructive proof, and the
+audit has since widened from per-example to whole-tree: the axiom closure of
+every declaration in the kernel is attested on every judged round, because a
+soundness check scoped to a hand-maintained roster audits exactly what someone
+remembered to add.
 
 **Difficulty:** Mid. **Deliverable:** golden test dirs with at least one
 `.expected.out` per framework, plus a `#print axioms` allow-list snapshot
@@ -295,8 +299,8 @@ used on the textual and numerical axes now extends to the operational kernel
 enumerates the architectural surface only; the axis's memory- and
 session-substrate theorems are tracked privately and are deliberately absent
 from the public syllabus. A fourth family — the context-operations cells,
-which model what an automated agent is given to work from — closed this
-cycle, one of them on a negative result; see [STATUS](./STATUS.md).
+which model what an automated agent is given to work from — closed in an
+earlier cycle, one of them on a negative result; see [STATUS](./STATUS.md).
 
 **Difficulty:** Mid–Deep.
 
