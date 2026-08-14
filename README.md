@@ -105,9 +105,12 @@ the template set now exists, and the operational kernel's first proof
 discharges its per-snapshot universals over a closed-enumeration helper of
 precisely this shape.
 
-**Difficulty:** Entry → Mid. **Deliverable:** `mem_*_cases` + `mem_of_index`
-helpers for the legal- and financial-domain framework lists, packaged as
-representation-guide templates.
+**Difficulty:** Entry → Mid. **Status:** template shipped; consumption open.
+The helper shapes exist as a packaged template set the proof-driving lanes
+read at prompt-assembly time. What has not landed is the second half:
+per-kernel instances of the helper, and the model consuming them instead of
+regenerating chains. The deliverable is measurable rather than declarable —
+the witness-tower depth in the legal-domain example proof coming down.
 
 ## 3. [A] Metaprogramming: replace the string codegen with a Lean elaborator
 
@@ -125,8 +128,18 @@ directives, so a wrong `open` order or a stale call string fails only at
 two most fragile parts of the architecture. Likely the single
 highest-leverage area on this list.
 
-**Difficulty:** Deep. **Status:** not started. **Deliverable:** a `facts%`
-prototype for one framework (Title VI is small) before generalizing.
+**Difficulty:** Deep. **Status:** not started *as scoped here* — and the way
+the previous status line was wrong is worth keeping. It read "not started" on
+the evidence that no metaprogramming token appeared anywhere in the tree.
+That evidence is now false: a domain proof tactic shipped (#8), so the
+metaprogramming substrate is present. The area is still untouched, because a
+tactic is not a term elaborator and does not touch the code-generation seam
+at all — but the *detector* had gone stale the moment something unrelated
+landed nearby, and it would have reported "started" for the wrong reason just
+as readily. A status line assembled from a search over the tree answers
+"is this token present", never "is this work done".
+**Deliverable:** a `facts%` prototype for one framework (Title VI is small)
+before generalizing.
 
 ## 4. [A] Decidability and Classical reasoning on opaque domains
 
@@ -199,9 +212,18 @@ every declaration in the kernel is attested on every judged round, because a
 soundness check scoped to a hand-maintained roster audits exactly what someone
 remembered to add.
 
-**Difficulty:** Mid. **Deliverable:** golden test dirs with at least one
-`.expected.out` per framework, plus a `#print axioms` allow-list snapshot
-per kernel.
+**Difficulty:** Mid. **Status:** shipped — in a different shape than this
+entry named, which is the other half of the lesson in #3. The old status line
+read "not started" on the evidence that no directory of the named shape
+existed in any kernel. Literally true and substantively wrong: golden-output
+regression shipped as a per-example byte-reproduction check wired into the
+judge, the per-axiom audit shipped whole-tree, and the aggregating regression
+battery shipped as a separate suite. "Was the named directory built" was the
+wrong question. **Still open** — the upstream per-computation axiom landing
+this entry flags is not yet exploited as a per-fact signal.
+**Deliverable:** an allow-list snapshot keyed on the per-computation axiom
+names, so an injected fact surfaces as an unexpected axiom rather than a
+build pass.
 
 ## 8. [A] Tactics framework + Aesop / `grind` rule sets
 
