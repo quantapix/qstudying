@@ -1,6 +1,6 @@
 # qstudying-public — status
 
-_Snapshot: 2026-08-14. Refreshed weekly (Fridays) during the
+_Snapshot: 2026-08-21. Refreshed weekly (Fridays) during the
 2026-06-01 → 2026-12-01 drive window._
 
 Release-narrative status of the Lean4 focus-area syllabus. Companion to the
@@ -8,12 +8,12 @@ Release-narrative status of the Lean4 focus-area syllabus. Companion to the
 
 ## Overall
 
-Third cycle running in which the published scoreboard did not move, and the
-third with a different reason. This one is the most useful of the three:
-**an instrument was found measuring the wrong population four separate times,
-in three different layers, inside one week** — and once that was named as one
-finding rather than four incidents, the response stopped being a fix and became
-a standing law about what a guard has to prove before it is permitted to run.
+Fourth cycle running in which the published scoreboard did not move, and the
+fourth with a different reason. This one is the sharpest: **a figure this
+project publishes was found to have been produced by an instrument that could
+silently delete part of its own input**, and the round that found it also
+breached — so the corrected figure cannot be published either, and this file
+says so rather than shipping the number it already knows is wrong.
 
 Nothing below changes a theorem. Everything below changes what this project is
 willing to claim about one.
@@ -32,8 +32,8 @@ one per domain, never sharing ground truth:
   structurally-synthetic snapshots, never real-tree data. Its consumer is
   local-only and only visualizes; nothing here is a deployed surface.
 
-All three pin the same Lean toolchain (`leanprover/lean4:v4.32.0`, three-way
-lockstep since the 2026-07-14 bump; bumps move all three and replay each
+All three pin the same Lean toolchain (`leanprover/lean4:v4.33.0`, three-way
+lockstep since the 2026-08-15 bump; bumps move all three and replay each
 kernel's example proofs).
 
 ## Adversarial standing
@@ -49,10 +49,11 @@ Numbers as of this snapshot, all machine-checked by the build:
   adversary.
 
 **Not one of these moved this cycle, and the reason is structural rather than
-disappointing.** Four rounds ran. All four ran against a cell that is not on
-the roster, and the roster is what these figures count. A cell joins whole — its
-proved theorems *and* its full adversarial standing, including attacks that
-landed against it — or not at all. Two of the four rounds were void besides.
+disappointing.** Several rounds ran. All of them ran against a cell that is not
+on the roster, and the roster is what these figures count. A cell joins whole —
+its proved theorems *and* its full adversarial standing, including attacks that
+landed against it — or not at all. More than one of those rounds breached
+besides, and a breached round is void as evidence.
 
 The round count deserves a note, because there are two defensible ways to count
 it and this file publishes the smaller one on purpose. One count is every round
@@ -123,13 +124,31 @@ opposite instruments:
   text.
 - A **proposition-valued definition** sits outside any keyword roster.
 - A **private declaration** is name-mangled outside its own namespace and fails
-  both halves of every prefix-anchored filter — five live constants of one
-  module are rejected today.
+  both halves of every prefix-anchored filter. **This one is now cured.** The
+  filter's internal-declaration test had been doing two jobs at once — excluding
+  compiler-generated auxiliaries, which is correct, and silently excluding
+  author-written private declarations, which is a hole that fails in the
+  direction that makes the audit look cleaner. The cure separates them by
+  reading the user-facing name.
 
 The first three defeat source-derived instruments. The fourth defeats
 environment-derived ones. So "enumerate from the environment" is necessary and
 **not** sufficient: the filter is the other half of the instrument, and both the
 population and the filter have to be derived from the same place.
+
+Two things about that cure are worth more than the cure. Its witness does not
+reconstruct the mangling — it declares its own private probe, asks the
+elaborator which constant it actually minted, and then requires the new filter
+to admit that constant while the old one rejects it. A witness that rebuilds the
+mangled name by hand is testing your string arithmetic, not your guard. And a
+companion assertion requires the widening to be **monotone**, so a cure to a
+filter cannot quietly narrow what the guard grades — the failure mode a widening
+invites.
+
+Measured at the moment of widening, the module had no private declarations left,
+so the cure moved no number at all. The hole was real when it was found and
+empty when it was closed. That is the normal shape of a fix that arrives late,
+and it is not an argument that the hole was never there.
 
 The measured consequence, which is the sharpest statement of why any of this
 matters: one example's classical footprint was **ten, not the eight its own
@@ -186,18 +205,72 @@ cells relative to what actually transferred. It was not superseded, because an
 orchestrator correcting a breach that voids its own round is self-interested and
 does not get to.
 
-## The artifact under test is itself a channel
+## A figure is a claim about a population, and it will be quoted without one
 
-New this cycle, and published open rather than cured. The adversarial claim
-rests on the attacker not having seen prior adjudications. But the proof file
-under test carries **136 references to prior rounds**, including verbatim
-convictions, and the adversary cannot test the artifact without reading it. One
-round graded clean with that channel wide open.
+Three separate instances this cycle, in three layers, and they are the same
+defect the guard-admissibility rules already name — restated because the rules
+did not prevent any of them.
 
-This is not fixed by deleting the history. That history is the constructive
-side's legitimate rationale for why the proof is shaped the way it is. It is
-recorded as a known open channel, which is the honest disposition when the cure
-would cost more than the leak.
+A published summary quoted a carrier count under a label that excludes, by its
+own wording, part of the population the count was taken over. The underlying
+artifact had carried the smaller, correct number throughout; the prose around it
+carried the larger one. A section published a split of one module's declarations
+that the tree does not measure, and its own enumeration listed one fewer name
+than its own count.
+
+The third is the one that reaches this file. **A fold step seeded a published
+adversarial figure from an optional field.** A round record that omitted the
+field was still schema-valid, so the fold silently dropped that round's findings
+out of the figure and nothing anywhere reported a problem. Measured after the
+fact: the published number was half the honest one, and the omission touched a
+small but real fraction of the adversarial moves across several rounds. The cure
+derives the value from a required field instead, with a sabotage-verified
+witness.
+
+**None of that has reached the public figure yet, and the reason is the honest
+one.** The round that found the defect breached, and so did the one after it, so
+the fold that would publish the corrected value has not been allowed to run.
+This file therefore publishes no open-findings figure this cycle: the value on
+disk is the pre-cure one, already convicted, and the corrected value does not
+exist yet. Publishing the convicted number with a footnote would be worse than
+publishing nothing, because a number in a table outlives its footnote.
+
+The general rule, which is cheap and which this project keeps re-learning: **a
+count is a claim about a population, so state the population in the same
+sentence as the count, and derive it from a field the schema requires.** An
+optional field is a silent subtraction waiting for the one emitter that forgets
+it.
+
+## The artifact under test is itself a channel — and it is not the worst one
+
+The adversarial claim rests on the attacker not having seen prior adjudications.
+The proof file under test carries a substantial history of prior rounds,
+including verbatim convictions, and the adversary cannot test the artifact
+without reading it. That is recorded as a known open channel rather than cured:
+the history is the constructive side's legitimate rationale for why the proof is
+shaped the way it is, and the cure would cost more than the leak.
+
+A worse one was found this cycle, and it is worse for a structural reason. **A
+standing instruction file is delivered to an automated participant in system
+context — not read, delivered.** Every channel the independence instrument
+grades is a *read*, and the transcript records no delivery, so the instrument's
+silence on that channel is indistinguishable from absence. It was not silent
+because the channel was clean; it was silent because it cannot see the channel
+at all.
+
+That file was carrying the example's identifier, a long run of prior-round
+history, the adjudication figures, and the locations of the very documents the
+same file forbids a blind participant's brief from naming — the rule defeated by
+the file that states it. The payload is now split out to documents the
+participant never receives, and the file points at that document set by
+behaviour rather than by naming a location, which is the first time the
+non-naming rule has been enforceable at all.
+
+The transferable form: **an instrument that grades reads cannot grade a
+delivery, and "no finding" from an instrument that cannot look is not a
+finding.** Before trusting a clean channel report, enumerate the channels the
+instrument is structurally incapable of observing, and check those by
+construction instead.
 
 ## Ordering is a gate, and prose could not hold it
 
@@ -212,6 +285,21 @@ a single verb chains the closing steps in their required order instead of
 leaving the operator to sequence them. The rule it enforces is still worth
 stating in general, because the remaining cures are still prose: **nothing that
 promotes may run before the oracle that can void it.**
+
+Two further instances this cycle, and the second is the sharper.
+
+A promotion step refused correctly on a breach and returned its own exit code —
+the mechanism working as designed. Then a **test** of that same lane folded the
+live records directory as a side effect, overwrote the committed standing file,
+and in doing so moved the very figure the production gate was at that moment
+refusing to move. The gate was not defeated by a caller who ignored it; it was
+defeated by a test that never went through it.
+
+The rule that follows is not "add another gate". It is that **a witness may not
+invoke a production writer against production state** — it folds a copy, and it
+carries an arm that reds if the live file changes at all. A gate that lives in
+the writer is a gate the writer's callers can walk around; the gate has to live
+where the invocation is made.
 
 ## An archive is evidence only once something checks it is there
 
@@ -245,6 +333,15 @@ Two rules survive from all of it:
   was scoped right.** A declared loss should be read as *absent here* until a
   peer location has been checked.
 
+Both halves of that lesson are now mechanized rather than remembered. The census
+is host-aware: it resolves each record against the machine the round actually
+ran on instead of reporting absence-here as gone. Re-run over the previously
+suspect rounds, it declares **zero losses** — every record that had been counted
+missing was present on a peer machine, exactly as the earlier correction
+predicted. The rule survives the cure and is the reason to keep it stated: a
+declared loss should be read as *absent here* until a peer location has been
+checked.
+
 The archive itself still never enters the repository. A committed transcript is,
 by construction, an answer key — exactly the material a future adversary must
 not have seen — so committing it would poison the next round's independence
@@ -266,6 +363,50 @@ The same discipline applies to the witnesses: a proof-of-fire arm can be
 simultaneously correct — it fails — and wrong, because it fails for a different
 reason than the one it was written for. Run the sabotage and read *why* it went
 red, not just that it did.
+
+## A verdict that is a function of where the shell was standing
+
+The lane's independence audit convicted a participant this cycle for reading a
+file outside its own surface. The file does not exist.
+
+The command was compliant and used exactly the form the brief prescribes: change
+into the working directory, then reference a neighbouring file relatively.
+Resolved against that directory, the target is an ordinary, specific, permitted
+file. But the resolver was handed the working directory **recorded in the
+transcript** — which is the orchestrator's own shell at the moment it spawned
+the participant, not the participant's. The orchestrator had stepped into a
+directory the participant is banned from, in order to read source claims before
+spawning it, and that location was stamped into the participant's record.
+Driving the real resolver on the recorded location reproduces the convicting
+string byte for byte. Both participants' recorded locations were, in fact,
+backwards with respect to their own surfaces.
+
+So a conduct verdict was a function of where an unrelated shell happened to be
+standing. This is a known class — an orchestrator-authored conviction — one
+layer deeper than the previous instance and invisible where that one was
+legible.
+
+Three things follow, and only the first is about this defect:
+
+- **The verdict stands and is not argued down.** The audit is not re-run in
+  search of a different answer; that is the one response the lane forbids. The
+  defect is filed, not applied.
+- **The instrument is shared across all three kernels**, so the other two axes
+  are exposed identically. A defect in a shared component is not scoped to the
+  axis that found it.
+- **A shared-component fix is regression-measured against every consuming axis's
+  own test suite, never against the changing axis's production run.** Measured
+  this cycle: one such change reds three assertions in a sibling axis's suite,
+  while the check the changing axis ran instead came back clean — because its
+  production run declares none of the state the change moved. The cheaper check
+  is not merely weaker; it is systematically blind to exactly this class.
+
+One more, recorded because it is unflattering. The intervention chosen for that
+round — restating the ban in full, as the opening content of the brief, with the
+compliant recipe attached — did not prevent the twelfth instance of the
+behaviour it was written to prevent, and was not what convicted anyway.
+**Briefing has now been measured as not being the lever.** That is a result
+about instructions, not about the participant.
 
 ## The cost of the trust
 
@@ -289,20 +430,24 @@ standing discharge record: drop the directive, keep the measurement.
 
 ## Build freshness
 
-The metrics snapshot behind the public status card is unchanged from last
-cycle's, and the tree has moved further away from it: **229 files** under the
-kernel tree now differ from the snapshot revision, up from just under two
-hundred. The freshness flag reports stale and the public card reads **degraded**
-rather than green.
+The metrics snapshot behind the public status card was re-emitted this cycle
+against the new toolchain pin, and the drift it reports fell sharply as a
+result: **70 files** under the kernel tree now differ from the snapshot
+revision, down from 229 last cycle. The freshness flag still reports stale and
+the public card still reads **degraded** — a smaller gap is still a gap, and the
+flag does not grade on a curve.
 
-That flag is the one repaired two cycles ago, after the previous version asked
-whether the snapshot's revision was an *ancestor* of the current one — which it
-is, and stays, forever, so it could report fresh but could never report stale.
-Three weeks of continuous degraded is not the flag failing; it is the first
-honest reading this project has had of how far its published metrics trail its
-tree. No refreshed coverage percentage is published in this snapshot,
-deliberately: publishing a number that the project's own gate calls stale is
-precisely the failure the repair was for.
+That flag is the one repaired earlier in the summer, after the previous version
+asked whether the snapshot's revision was an *ancestor* of the current one —
+which it is, and stays, forever, so it could report fresh but could never report
+stale. The card has read degraded continuously since 2026-07-25. That is not the
+flag failing; it is the first honest reading this project has had of how far its
+published metrics trail its tree, and it is stated as a date rather than a
+number of weeks so that the sentence stops being true on a schedule.
+
+No refreshed coverage percentage is published in this snapshot, deliberately:
+publishing a number that the project's own gate calls stale is precisely the
+failure the repair was for.
 
 ## Cadence
 
@@ -319,9 +464,16 @@ log is the change record.
 - Every count in this file is emitted by the same build that checks the proofs;
   none of it is hand-maintained. Where a count is scoped — as the adversarial
   scoreboard is — the scope is stated next to it rather than left to inference.
-- Where a figure is stale, this file says stale rather than restating it.
+- Where a figure is stale, this file says stale rather than restating it. Where
+  a figure is *convicted* — produced by an instrument since found defective —
+  this file publishes nothing in its place and says why, rather than publishing
+  the convicted value with a caveat attached.
 - Where two defensible bases exist for the same count, this file names both and
   says which one it publishes.
+- Every falsifiable claim on this page is re-derived against the working tree at
+  each refresh, not carried forward because it was published last week. Four
+  claims were corrected this cycle on that basis, each of them true when it was
+  written.
 
 ## Contact
 

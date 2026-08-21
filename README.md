@@ -26,8 +26,8 @@ paths (Topology, MeasureTheory, Analysis, CategoryTheory) remain deliberately
 out of scope.
 
 Toolchain pin (all three kernels, three-way lockstep):
-`leanprover/lean4:v4.32.0` (bumped from v4.31.0 on 2026-07-14; the prior
-v4.30.0 → v4.31.0 bump was 2026-06-29). Any bump moves all three kernels
+`leanprover/lean4:v4.33.0` (bumped from v4.32.0 on 2026-08-15; the prior
+v4.31.0 → v4.32.0 bump was 2026-07-14). Any bump moves all three kernels
 in lockstep and replays each kernel's example proofs. "One commit" is not
 always achievable — when the three kernels are each held by a separate
 concurrent session, the bump lands as one commit per kernel, in lockstep
@@ -79,11 +79,11 @@ why opaque predicates must be `Prop`-valued (not `Bool`), and why
 representation guide's kernel-shape chapter starts here.
 
 Re-validate against PR #12973 — "makes theorems opaque in almost all
-ways, including in the kernel." With all three kernels now pinned to v4.32.0,
+ways, including in the kernel." With all three kernels now pinned to v4.33.0,
 a green `lake build` of each axiom set is the load-bearing post-bump
 confirmation that `Prop`-valued opaque predicates and `noncomputable`
 witnesses still reduce in def-eq the way the proofs assume — re-confirmed on
-the v4.31.0 → v4.32.0 bump.
+the v4.32.0 → v4.33.0 bump.
 
 **Difficulty:** Deep. Non-negotiable. **Order:** start here.
 
@@ -321,8 +321,10 @@ used on the textual and numerical axes now extends to the operational kernel
 enumerates the architectural surface only; the axis's memory- and
 session-substrate theorems are tracked privately and are deliberately absent
 from the public syllabus. A fourth family — the context-operations cells,
-which model what an automated agent is given to work from — closed in an
-earlier cycle, one of them on a negative result; see [STATUS](./STATUS.md).
+which model what an automated agent is given to work from — landed in an
+earlier cycle, one of them on a negative result. One of those cells is still
+the adversarial lane's live target, with findings open against it; see
+[STATUS](./STATUS.md).
 
 **Difficulty:** Mid–Deep.
 
