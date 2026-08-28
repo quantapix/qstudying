@@ -1,25 +1,30 @@
 # qstudying-public — status
 
-_Snapshot: 2026-08-21. Refreshed weekly (Fridays) during the
+_Snapshot: 2026-08-28. Refreshed weekly (Fridays) during the
 2026-06-01 → 2026-12-01 drive window._
 
 Release-narrative status of the Lean4 focus-area syllabus. Companion to the
 [README](./README.md), not a substitute.
 
 ## Overall
+The scoreboard moved this cycle, after four cycles of not moving. Most of it
+moved the wrong way, which is the point of publishing it.
 
-Fourth cycle running in which the published scoreboard did not move, and the
-fourth with a different reason. This one is the sharpest: **a figure this
-project publishes was found to have been produced by an instrument that could
-silently delete part of its own input**, and the round that found it also
-breached — so the corrected figure cannot be published either, and this file
-says so rather than shipping the number it already knows is wrong.
+Two figures this file withheld last cycle now exist, because the fold that
+produces them was refused by two consecutive breached rounds and has since been
+allowed to run. Both are worse than the numbers they replace. A third figure —
+the certification badge — **fell for the first time**, from twenty of
+twenty-two to eighteen. It fell because a newly-worked family took real
+adversarial damage, and because the badge is scored cumulatively: a cell that
+ever had something land is disqualified permanently, repair or no repair. The
+rule that makes the badge conservative is the same rule that makes it fall.
 
-Nothing below changes a theorem. Everything below changes what this project is
-willing to claim about one.
+One figure moved the right way, and it is the one that has been stuck longest:
+the freshness flag behind the public card now reports current, so the card reads
+healthy for the first time since late July, and the coverage fraction is
+publishable again.
 
 ## The three axes
-
 The architecture the syllabus is selected *for* runs in three parallel kernels,
 one per domain, never sharing ground truth:
 
@@ -37,45 +42,65 @@ lockstep since the 2026-08-15 bump; bumps move all three and replay each
 kernel's example proofs).
 
 ## Adversarial standing
-
 Numbers as of this snapshot, all machine-checked by the build:
 
-- **98** theorems proved across the operational targets; **70** on the
+- **105** theorems proved across the operational targets; **77** on the
   domain-coverage numerator.
-- **63** adversarial rounds; **341** attack probes thrown, **2** landed, **0**
-  open.
-- **20 of 22** numerator cells re-certified under the closed adversarial
+- **65** adversarial rounds; **357** attack probes thrown, **12** landed,
+  **11** adjudication items open.
+- **18 of 22** numerator cells re-certified under the closed adversarial
   contract, each holding zero landed attacks against a fresh, independent
   adversary.
+- **12 of 22** domain concepts covered, all at the strongest tier, none refuted.
 
-**Not one of these moved this cycle, and the reason is structural rather than
-disappointing.** Several rounds ran. All of them ran against a cell that is not
-on the roster, and the roster is what these figures count. A cell joins whole —
-its proved theorems *and* its full adversarial standing, including attacks that
-landed against it — or not at all. More than one of those rounds breached
-besides, and a breached round is void as evidence.
+**State the population in the same sentence as the count, so: these figures are a
+sum over the thirty-one on-roster cells that carry a standing record, each taken
+at its own last-folded round rather than at a common cut-off.** A round whose
+adjudication is still gated is in none of them. Four further families are held
+off the roster until each can arrive whole — proved theorems *and* full
+adversarial standing in one change — and they are excluded in **both** directions:
+their theorem counts are absent here too. Read every figure over that population,
+never as a statement about the whole tree.
 
-The round count deserves a note, because there are two defensible ways to count
-it and this file publishes the smaller one on purpose. One count is every round
-that has been run. The other counts only rounds on fully adjudicated roster
-entries. **The published figure is the adjudication-gated one**, on the same
-principle as the certification badge: a public count gates on adjudication.
-The two bases diverge by a few rounds continuously and neither is ever
-corrected toward the other; they answer different questions.
+One more stamp is owed and is given here rather than assumed: the open-item
+figure is folded under two attribution rules at once, because the ruling that
+unifies them is adopted but the mechanism that implements it has not shipped.
+Earlier rounds label an item's attribution from the judge's verdict; later rounds
+derive it. The two disagree materially where they overlap. **A cleared ruling is
+not a shipped mechanism**, and a figure produced across the seam should say so.
 
-The 20/22 figure remains deliberately conservative by ruling: the badge gates on
-the *cumulative* record, so a cell that ever had an attack land is disqualified
-permanently, even after the repair. A latest-round-scoped reading of the same
-data would show 22/22; it was rejected, not deferred. A cell that once had
-something land has been shown to be repairable, not un-landable, and the public
-figure should say the weaker of the two things.
+Two of these figures rose sharply — landed attacks from two to twelve, open items
+from zero to eleven. **That rise mixes two different things and this file will not
+pretend otherwise.** Part of it is the population cure this file described last
+cycle finally reaching the projection: the fold had been seeded from an optional
+field, so any round record that omitted it was silently subtracted while staying
+schema-valid. Part of it is genuine new damage from two rounds on a newly-worked
+records-substrate family. The instrument cannot separate the two, so the honest
+statement is the total plus the ambiguity, not an attribution.
 
-Coverage is reported as coverage, not as a blanket falsifiability claim: rounds
-predating the 2026-07-14 oracle-independence fix did not certify the adversary's
-independence, which is why re-certification is a separate, slower number.
+The certification figure deserves the sharpest note, because it went down and
+because a page like this one is exactly where a falling number gets quietly
+dropped. It was twenty of twenty-two. It is eighteen. The two cells that left it
+had been certified, then took landed and open attacks in this cycle's rounds. The
+badge gates on the **cumulative** record by standing ruling, so they are out
+permanently — and the reading that would have kept them in was put up, and
+rejected, before any of this happened. **The rule was adopted when it cost
+nothing and it is being honoured now that it costs two cells.** That is the only
+interesting thing about a badge.
+
+Last cycle this file published a fallback reading of the same data that would
+have shown twenty-two of twenty-two. **That sentence is now false as well as
+rejected** — the newer damage defeats it on its own terms — and it is removed
+rather than carried forward with a caveat.
+
+Coverage is still reported as coverage, not as a blanket falsifiability claim:
+rounds predating the mid-July oracle-independence fix did not certify the
+adversary's independence, which is why re-certification is a separate, slower
+number. The first verdict issued under the stricter evidence contract landed this
+cycle; the census behind it is stated two different ways in two different places,
+so no count of it is published here until one basis is named.
 
 ## An instrument is only as good as the population it enumerates
-
 Four failures in one week, three layers apart, one shape:
 
 - A reporting column published **zero theorems proved for every round that had
@@ -108,7 +133,6 @@ clean round. That is the honest cost of a breach: it withholds the number, not
 the work.
 
 ## Enumerate by the environment — necessary, and not sufficient
-
 The axiom-floor probe was rebuilt to enumerate every constant the example's
 modules contribute, internal ones included, with two populations reported per
 run. Population 310 against the old text scan's 143, a strict superset, verdicts
@@ -167,7 +191,6 @@ measure is now written down beside the rate, because a measurement taken over
 stale artifacts does not fail, it just answers a different question.
 
 ## What a guard has to prove before it is allowed to run
-
 Adopted this cycle as a standing law rather than another individual repair. A
 guard is admissible only once it discharges all of these, the first three as
 committed, suite-exercised tests:
@@ -206,7 +229,6 @@ orchestrator correcting a breach that voids its own round is self-interested and
 does not get to.
 
 ## A figure is a claim about a population, and it will be quoted without one
-
 Three separate instances this cycle, in three layers, and they are the same
 defect the guard-admissibility rules already name — restated because the rules
 did not prevent any of them.
@@ -227,14 +249,6 @@ small but real fraction of the adversarial moves across several rounds. The cure
 derives the value from a required field instead, with a sabotage-verified
 witness.
 
-**None of that has reached the public figure yet, and the reason is the honest
-one.** The round that found the defect breached, and so did the one after it, so
-the fold that would publish the corrected value has not been allowed to run.
-This file therefore publishes no open-findings figure this cycle: the value on
-disk is the pre-cure one, already convicted, and the corrected value does not
-exist yet. Publishing the convicted number with a footnote would be worse than
-publishing nothing, because a number in a table outlives its footnote.
-
 The general rule, which is cheap and which this project keeps re-learning: **a
 count is a claim about a population, so state the population in the same
 sentence as the count, and derive it from a field the schema requires.** An
@@ -242,7 +256,6 @@ optional field is a silent subtraction waiting for the one emitter that forgets
 it.
 
 ## The artifact under test is itself a channel — and it is not the worst one
-
 The adversarial claim rests on the attacker not having seen prior adjudications.
 The proof file under test carries a substantial history of prior rounds,
 including verbatim convictions, and the adversary cannot test the artifact
@@ -273,7 +286,6 @@ instrument is structurally incapable of observing, and check those by
 construction instead.
 
 ## Ordering is a gate, and prose could not hold it
-
 Last cycle published three ordering defects in five weeks, all the same shape:
 *a step that promotes results ran upstream of the oracle that can void them.*
 Each was fixed correctly and none of the fixes prevented the next, because the
@@ -302,7 +314,6 @@ the writer is a gate the writer's callers can walk around; the gate has to live
 where the invocation is made.
 
 ## An archive is evidence only once something checks it is there
-
 The independence audit reads raw agent transcripts, and those decay within days,
 so verdicts are frozen alongside the round they judge and the raw evidence is
 archived outside the repository in the same step. The retention window is why
@@ -349,7 +360,6 @@ while looking like good record-keeping. Round records stay committed and
 append-only; the archive holds evidence only.
 
 ## Instruments that check themselves before they report
-
 A small pattern, stated because it is cheap and it has now caught three real
 defects at first fire. Every arm of a periodic reporting check is preceded by a
 self-sabotage pass over the check's own logic; if the sabotaged copy does not
@@ -365,7 +375,6 @@ reason than the one it was written for. Run the sabotage and read *why* it went
 red, not just that it did.
 
 ## A verdict that is a function of where the shell was standing
-
 The lane's independence audit convicted a participant this cycle for reading a
 file outside its own surface. The file does not exist.
 
@@ -409,7 +418,6 @@ behaviour it was written to prevent, and was not what convicted anyway.
 about instructions, not about the participant.
 
 ## The cost of the trust
-
 One finding from a review of the lane's own daily operation belongs here because
 it is unflattering and load-bearing: **the fixed per-round overhead now exceeds
 the proving work.** A round is roughly a dozen orchestrator-sequenced steps, and
@@ -420,7 +428,6 @@ trusted — deliberate, ruled, and correct — with a cost curve for maintaining
 that trust that is currently super-linear.
 
 ## A polarity trap worth publishing
-
 One recurring mechanical trap, because it will recur anywhere a test asserts an
 absence. A gap probe asserts that a diagnostic *is* produced. Close the gap and
 the probe compiles clean — so the attack lane reads clean-on-annotated as
@@ -428,34 +435,141 @@ the probe compiles clean — so the attack lane reads clean-on-annotated as
 "discharged" verdict to reach for. The resolution is to retire the probe into a
 standing discharge record: drop the directive, keep the measurement.
 
-## Build freshness
+## A description cannot falsify its own currency
+The freshness flag behind the public card has now been repaired twice, and the
+second defect is better than the first.
 
-The metrics snapshot behind the public status card was re-emitted this cycle
-against the new toolchain pin, and the drift it reports fell sharply as a
-result: **70 files** under the kernel tree now differ from the snapshot
-revision, down from 229 last cycle. The freshness flag still reports stale and
-the public card still reads **degraded** — a smaller gap is still a gap, and the
-flag does not grade on a curve.
+The first version asked whether the snapshot's revision was an *ancestor* of the
+current one — which it is, and stays, forever. It could report fresh and could
+never report stale.
 
-That flag is the one repaired earlier in the summer, after the previous version
-asked whether the snapshot's revision was an *ancestor* of the current one —
-which it is, and stays, forever, so it could report fresh but could never report
-stale. The card has read degraded continuously since 2026-07-25. That is not the
-flag failing; it is the first honest reading this project has had of how far its
-published metrics trail its tree, and it is stated as a date rather than a
-number of weeks so that the sentence stops being true on a schedule.
+The replacement asked a question with a reachable failing branch: has anything
+changed since the snapshot was taken? It counted changed files between the
+snapshot's revision and now. **The snapshot's own outputs live inside the region
+it was counting, and they are committed at a revision strictly later than the
+content they describe.** So the first time a regenerated snapshot was committed,
+every later reading reported drift forever — a permanent, self-inflicted stale
+signal, from a check that was correct in shape and wrong in domain. A description
+that includes itself in the population it measures cannot report on its own
+currency.
 
-No refreshed coverage percentage is published in this snapshot, deliberately:
-publishing a number that the project's own gate calls stale is precisely the
-failure the repair was for.
+The cure is structural rather than a carve-out: recompute a digest over the
+kernel sources and the compiler pin, and compare it against the digest the
+snapshot stamped when it was taken. A follow-up correction was needed on the
+**coordinate** — the right root is the build package, not the surrounding
+project. Read from one level up, the population grows by an order of magnitude,
+sweeps in every debate artefact, and picks up the wrong one of two compiler pins,
+so the recomputed digest can never match the stamped one except by accident.
+**Asking a well-formed question at the wrong coordinate is still the wrong
+question**, and it fails in the direction that looks like a real finding.
+
+The producer and its test now run the same code rather than two copies of it.
+
+With that in place the flag reports current, the card reads healthy for the first
+time since 2026-07-25, and the coverage fraction above is published — the first
+one this file has been willing to print since the flag started telling the truth.
+The previous snapshot's drift count is **retired, not improved**: it was the
+output of the defective instrument, and restating it smaller would have implied a
+trend that the number could not carry.
+
+## Three instruments wrong toward a false clean, on one round
+The first independently-audited round on a new family found three lane
+instruments broken, and all three broke in the same direction — toward reporting
+clean.
+
+- A configuration file stated that the judge inspects one directory and does not
+  descend into a scratch directory. The judge runs a recursive search. The
+  discrepancy was proof-fired at twenty-two versus twenty-three items. **The cost
+  of an instrument that under-describes itself lands on the participant who obeys
+  its contract**, not on the one who ignores it.
+- The judge's inference of which round a receipt belongs to mis-keys the *first*
+  audited round of any example that predates the auditor — which is nearly every
+  example. One code path reads the missing predecessor as "re-judge", another as
+  "fold with a warning", and nothing reconciled them.
+- A closure collector walked a theorem's statement and not its proof, because the
+  underlying accessor returns nothing for a theorem. It reported eight names
+  where the truth was eleven — and the three it missed were exactly the committed
+  facts it existed to audit.
+
+The transferable half: an instrument that fails toward clean is not found by
+running it. All three were found by a round that had a reason to distrust them.
+
+## The brief was refuted by the participant it briefed
+The round after that one produced the most useful result of the cycle, and it is
+a result about the orchestrator.
+
+The session briefed the constructive side that a certain statement had a
+"stronger, indexed form". That claim had been inherited from the previous round,
+carried forward through a tracking item, written into the brief, and **never
+checked by anyone**. The adversary derived the indexed statement
+character-for-character from the unindexed one, then generalised to an arbitrary
+index and instantiated it at a trivial value. **The index was inert.** The
+strengthening had never existed.
+
+The rule minted from it, and adopted across all three kernels: **a claim that one
+form is stronger than another needs a proof in both directions.** Pricing only
+the expensive direction is what makes the wrong answer feel measured.
+
+A second result from the same round is less flattering and more useful. A brief
+convened *specifically* on a recurring over-claiming defect produced a
+generated hundred-and-eighteen-member enumeration and fourteen demotions in
+place — and still shipped three fresh false ordering sentences, an
+anti-vacuity binder that was inert, and a warrant that miscounted its own
+environment. **A per-item audit measures diligence, not control of the
+generator.** The only thing that grades control of a generator is the *next*
+artefact it produces.
+
+So the following round was deliberately reversed: its findings were **not**
+pre-fixed the way the previous round's were. Cleaning up before the next round
+spares the constructive side the cost of its own over-claiming, which is
+precisely the thing being measured.
+
+## Five instruments that reported green over a failure
+Cured in one pass, and worth publishing as a set because the shape repeats:
+
+- A new test suite reported PASS over a failed assertion. Its helper library
+  exports one name and the suite called another, and an undefined command in a
+  `|| fail` idiom does not abort — it succeeds quietly. A proof-of-fire arm was
+  added; the suite had never once been shown to be capable of failing.
+- A test that stages a copy of the code it exercises was staging a hand-written
+  file list that had already gone stale once. It now derives the list, with an
+  arm that reds if the derivation returns nothing.
+- An ordering check compared the *first* textual match anywhere in a file, so a
+  comment counted as a call site — and the silent inverse is worse: a comment
+  mentioning the guard early would make a genuinely mis-ordered lane pass.
+- Another arm pinned a retired *mechanism* rather than the property the mechanism
+  was there to hold, so it kept passing after the mechanism was replaced.
+- A de-duplication of four routines copied across five callers looked safe by
+  reading and was not. Three of the "identical" copies differed — raw versus
+  stripped command output, two string-quoting conventions that agree until the
+  first value containing a quote, and a strict lookup versus a defaulting one.
+  All three are preserved as separate entry points and documented as numbered
+  traps. **A dedup verified by reading would have shipped all three.**
+
+## A guard authorized and deliberately unbuilt
+A kernel of machine-checked guards was authorized this cycle by minting its
+contract — and it is **unstarted**, on purpose, owned by no work item. It is
+recorded here because the authorization is the interesting part: the argument for
+it is a failure mode, not a feature. If the guard set is built as a kernel,
+incoherence in it becomes a red build; if it is built as a set of scripts,
+incoherence becomes a smaller pass. **A coverage number over a stale population is
+indistinguishable from one over a complete population**, which is the whole reason
+to pay for the kernel.
+
+The contract's own test suite is written to go red the moment the guard kernel
+appears. The first build session has to rewrite that case into a real check
+rather than let it quietly stop grading anything — which is itself the failure
+mode the suite exists to name.
+
+---
+
+Rest of file unchanged.
 
 ## Cadence
-
 Re-rankings, new threads, and dropped items land as ordinary diffs; the commit
 log is the change record.
 
 ## How to verify
-
 - The 10 focus areas + reading order + skip list are the whole syllabus; every
   upstream citation resolves to a public repository.
 - The textual and numerical kernels are observable in the two published kernel
@@ -476,6 +590,5 @@ log is the change record.
   written.
 
 ## Contact
-
 [github.com/quantapix](https://github.com/quantapix) — open an issue on any repo
 in the org. Answered in public; there is no contact email.

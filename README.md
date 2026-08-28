@@ -82,8 +82,10 @@ Re-validate against PR #12973 — "makes theorems opaque in almost all
 ways, including in the kernel." With all three kernels now pinned to v4.33.0,
 a green `lake build` of each axiom set is the load-bearing post-bump
 confirmation that `Prop`-valued opaque predicates and `noncomputable`
-witnesses still reduce in def-eq the way the proofs assume — re-confirmed on
-the v4.32.0 → v4.33.0 bump.
+witnesses still reduce in def-eq the way the proofs assume. All three kernels
+rebuilt and re-emitted their metrics on the current pin at the bump; what that
+witnesses is a green build on the new compiler, which is the claim being made
+and not a stronger one.
 
 **Difficulty:** Deep. Non-negotiable. **Order:** start here.
 
@@ -322,9 +324,12 @@ enumerates the architectural surface only; the axis's memory- and
 session-substrate theorems are tracked privately and are deliberately absent
 from the public syllabus. A fourth family — the context-operations cells,
 which model what an automated agent is given to work from — landed in an
-earlier cycle, one of them on a negative result. One of those cells is still
-the adversarial lane's live target, with findings open against it; see
-[STATUS](./STATUS.md).
+earlier cycle, one of them on a negative result. That family's two most recent
+rounds were the first consecutive pair in some time to close without the round
+itself breaching, and the second returned a clean verdict alongside four
+conceded findings — findings remain open against it. The lane's live target has
+since moved to a newer family, which is where this cycle's adversarial movement
+comes from; see [STATUS](./STATUS.md).
 
 **Difficulty:** Mid–Deep.
 
@@ -366,8 +371,12 @@ the adversarial lane's live target, with findings open against it; see
   first of the three to carry a live, deterministic coverage denominator:
   the set of operational domain concepts it formalizes is extracted from the
   git glossary over a cited neighborhood, so coverage is a real fraction over
-  a real ground-truth set rather than a hand-maintained estimate. Tracked as
-  it grows.
+  a real ground-truth set rather than a hand-maintained estimate. The emit
+  behind that fraction is, as of this refresh, verified current against the
+  kernel it describes rather than merely against the commit graph — so the
+  fraction is published this cycle for the first time: **12 of 22** concepts
+  covered, all at the strongest tier, none refuted. It is a real fraction over
+  a real ground-truth set, and it is expected to move both ways.
 
 ## Skip / deprioritise
 
